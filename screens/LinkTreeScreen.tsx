@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LinkTreeScreen
+export default LinkTreeScreen;
