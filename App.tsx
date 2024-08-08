@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+/*import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -114,5 +114,16 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
+export default App;
+*/
+
+// App.tsx
+import React from 'react';
+import AppNavigator from './navigation/AppNavigator';
+
+const App = () => {
+  return <AppNavigator />;
+};
 
 export default App;
