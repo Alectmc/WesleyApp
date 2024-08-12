@@ -39,7 +39,7 @@ const SettingsScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text>First Name: </Text>
+            <Text style={styles.textStyle}>First Name: </Text>
             {editFirstName ? (
                 <>
                     <TextInput
@@ -51,12 +51,12 @@ const SettingsScreen = () => {
                 </>
             ) : (
                 <View style={styles.infoContainer}>
-                    <Text>{firstName}</Text>
+                    <Text style={styles.textInputStyle}>{firstName}</Text>
                     <Button title="Edit" onPress={() => setEditFirst(true)} />
                 </View>
             )}
 
-            <Text>Last Name: </Text>
+            <Text style={styles.textStyle}>Last Name: </Text>
             {editLastName ? (
                 <>
                     <TextInput
@@ -68,12 +68,12 @@ const SettingsScreen = () => {
                 </>
             ) : (
                 <View style={styles.infoContainer}>
-                    <Text>{lastName}</Text>
+                    <Text style={styles.textInputStyle}>{lastName}</Text>
                     <Button title="Edit" onPress={() => setEditLast(true)} />
                 </View>
             )}
 
-            <Text>Email: </Text>
+            <Text style={styles.textStyle}>Email: </Text>
             {editEmail ? (
                 <>
                     <TextInput
@@ -85,7 +85,7 @@ const SettingsScreen = () => {
                 </>
             ) : (
                 <View style={styles.infoContainer}>
-                    <Text>{email}</Text>
+                    <Text style={styles.textInputStyle}>{email}</Text>
                     <Button title="Edit" onPress={() => setEditEmail(true)} />
                 </View>
             )}
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
+        justifyContent: 'center',
     },
     input: {
         borderWidth: 1,
@@ -110,6 +111,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 8,
+    },
+    textStyle: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: 'black'
+    },
+    textInputStyle: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: 'black',
     },
 });
 

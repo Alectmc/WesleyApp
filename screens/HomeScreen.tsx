@@ -17,6 +17,12 @@ const HomeScreen = ({ navigation }) => {
             <Text>NONE of this is public, so please keep this confidential/within Council!</Text>
             <TouchableOpacity 
                 style={styles.button} 
+                onPress={() => navigation.navigate('Sign In')}
+            >
+                <Text style={styles.buttonText}>Sign In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+                style={styles.button} 
                 onPress={() => navigation.navigate('Calendar')}
             >
                 <Text style={styles.buttonText}>View Calendar</Text>

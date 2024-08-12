@@ -7,6 +7,7 @@ import PrayerRequestScreen from '../screens/PrayerRequestScreen'; //To be implem
 import LinkTreeScreen from '../screens/LinkTreeScreen';
 import SetupScreen from "../screens/SetupScreen";
 import SettingsScreen from '../screens/SettingsScreen';
+import SignInScreen from '../screens/SignInScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, ActivityIndicator } from 'react-native';
 
@@ -47,6 +48,7 @@ const AppNavigator = () => {
                         gestureEnabled: false,
                     }}
                 />
+                <Stack.Screen name="Sign In" component={SignInScreen} />
                 <Stack.Screen name="Calendar" component={CalendarScreen} />
                 <Stack.Screen name="Link Tree" component={LinkTreeScreen} />
                 <Stack.Screen name="Prayer Requests" component={PrayerRequestScreen} />
