@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert, AlertButton } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SettingsScreen = () => {
     const [firstName, setFirstName] = useState('');
@@ -113,7 +114,9 @@ const SettingsScreen = () => {
                 </View>
             )}
 
-            <Button title="Delete All Data" color="red" onPress={() => handleDeleteData()}/>
+            <TouchableOpacity style={styles.button} onPress={handleDeleteData}>
+                <Text style={styles.buttonText}>Delete All Data</Text>
+            </TouchableOpacity>
 
         </View>
     );
@@ -139,14 +142,36 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         fontWeight: 'bold',
-        fontSize: 24,
+        fontSize: 28,
         color: 'black'
     },
     textInputStyle: {
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 24,
         color: 'black',
+        padding: 24
     },
+    button: {
+        backgroundColor: '#ff4d4d',
+        paddingTop: 20,
+        paddingVertical: 15,
+        paddingHorizontal: 25,
+        marginVertical: 50,
+        borderRadius: 30,
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
+    buttonText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'black',
+        textAlign: 'center'
+    }
 });
+
+//<Button title="Delete All Data" color="red" onPress={() => handleDeleteData()}/>
 
 export default SettingsScreen;
