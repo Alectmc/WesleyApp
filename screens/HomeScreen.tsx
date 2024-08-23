@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
 //import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -10,11 +10,10 @@ const HomeScreen = ({ navigation }) => {
                 style={styles.settingsButton}
                 onPress={() => navigation.navigate('Settings')}
             >
-                <Icon name='settings-outline' size={24} color='black' />
+                <Icon name='settings-outline' size={32} color='black' />
             </TouchableOpacity>
-            <Text>Welcome to the Wesley App Pre-Alpha Test!</Text>
-            <Text>EVERYTHING Here is subject to change and not finalized.</Text>
-            <Text>NONE of this is public, so please keep this confidential/within Council!</Text>
+            <Image source={require('../assets/Logo.png')} style={styles.imageStyle} />
+            <Text style={styles.textStyle}>Welcome to the Wesley App Alpha Test!</Text>
             <TouchableOpacity 
                 style={styles.button} 
                 onPress={() => navigation.navigate('Sign In')}
@@ -87,6 +86,16 @@ const styles = StyleSheet.create({
         top: 40,
         right: 16,
     },
+    imageStyle: {
+        width: 250,
+        height: 250,
+    },
+    textStyle: {
+        padding: 16,
+        fontWeight: 'bold',
+        fontSize: 22,
+        color: 'black'
+    }
 });
 
 export default HomeScreen;

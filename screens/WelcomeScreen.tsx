@@ -17,9 +17,10 @@ const WelcomeScreen = ({ navigation }) => {
             Animated.delay(500), //Delay for 1 second.
             Animated.timing(textFade, {
                 toValue: 1,
-                duration: 2000,
+                duration: 1000,
                 useNativeDriver: true
-            })
+            }),
+            Animated.delay(1000)
         ]).start(() => checkUserInfo());
 
         const checkUserInfo = async () => {

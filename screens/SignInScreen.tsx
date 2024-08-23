@@ -7,7 +7,7 @@ import 'moment-timezone';
 import axios from 'axios';
 
 const SignInScreen = () => {
-    const [selectedEvent, setSelectedEvent] = useState('');
+    const [selectedEvent, setSelectedEvent] = useState('tuesday_worship');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -34,10 +34,6 @@ const SignInScreen = () => {
 
     const handleSignIn = () => {
         const event = events.find(e => e.value === selectedEvent);
-        if (!event) {
-            Alert.alert('Error', 'Please select an event.');
-            return;
-        }
 
         const now = moment().tz('America/Chicago');
         const startTime = moment(now).day(event.day).hour(event.start.split(':')[0]).minute(event.start.split(':')[1]);
@@ -90,7 +86,7 @@ const styles = StyleSheet.create({
     picker: {
         width: '100%',
         marginBottom: 20,
-        backgroundColor: 'lightgray',
+        backgroundColor: 'white',
     },
     textStyle: {
         padding: 20,

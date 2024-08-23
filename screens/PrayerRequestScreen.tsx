@@ -66,7 +66,7 @@ const PrayerRequestScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text>This is MAYBE still broken? lol idk anymore</Text>
+            <Text style={styles.textStyle}>IT WORKS!! PRAISE BE TO GOD!</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Enter your prayer request here..."
@@ -76,7 +76,7 @@ const PrayerRequestScreen = () => {
                 onChangeText={setMessage}
             />
             <View style={styles.checkboxContainer}>
-                <Text>Would you like this Prayer Request to stay confidential?  </Text>
+                <Text>Would you like this Prayer Request to stay private? </Text>
                 <CheckBox
                     value={isAnonymous}
                     onValueChange={setIsAnonymous}
@@ -108,6 +108,9 @@ const styles = StyleSheet.create({
     checkboxLabel: {
         marginLeft: 8,
     },
+    textStyle: {
+        textAlign: 'center'
+    }
 });
 
 export default PrayerRequestScreen;

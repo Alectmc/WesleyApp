@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen'; //To be implemented
 import CalendarScreen from '../screens/CalendarScreen'; //To be implemented
 import PrayerRequestScreen from '../screens/PrayerRequestScreen'; //To be implemented
@@ -8,6 +8,7 @@ import LinkTreeScreen from '../screens/LinkTreeScreen';
 import SetupScreen from "../screens/SetupScreen";
 import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, ActivityIndicator } from 'react-native';
 
@@ -35,11 +36,13 @@ const AppNavigator = () => {
                 <ActivityIndicator size="large" color="#0000ff" />
             </View>
         );
-    }
+
+    };
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={initialRoute}>
+            <Stack.Navigator initialRouteName="Welcome">
+            <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}} />
                 <Stack.Screen
                     name="Home"
                     component={HomeScreen}

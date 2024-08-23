@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert, AlertButton } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification'
 
@@ -35,6 +35,29 @@ const SettingsScreen = () => {
         if (field === "First Name") setEditFirst(false);
         if (field === "Last Name") setEditLast(false);
         if (field === "Email") setEditEmail(false);
+    };
+
+    const handleDeleteData = () => {
+        Alert.alert(
+            "WARNING: This cannot be undone",
+            "Are you sure you want to delete all data?",
+            [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Confirm',
+                    onPress: async () => { 
+                        await AsyncStorage.removeItem('user_info');
+                        setFirstName('');
+                        setLastName('');
+                        setEmail('');
+                        Alert.alert("Success", "Your data has been deleted.");
+                     }
+                }
+
+            ]
+        );
     };
 
     return (
@@ -89,6 +112,8 @@ const SettingsScreen = () => {
                     <Button title="Edit" onPress={() => setEditEmail(true)} />
                 </View>
             )}
+
+            <Button title="Delete All Data" color="red" onPress={() => handleDeleteData()}/>
 
         </View>
     );

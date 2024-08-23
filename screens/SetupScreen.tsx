@@ -20,12 +20,28 @@ const SetupScreen = ({ navigation }) => {
         }
 
         try {
-            await AsyncStorage.setItem('@user_info', JSON.stringify({ firstName, lastName, email }));
+            await AsyncStorage.setItem('user_info', JSON.stringify({ firstName, lastName, email }));
             console.log('User info saved');
             navigation.navigate('Home');
         } catch (e) {
             Alert.alert('Error', 'An unexpected error occured. Please try again later.');
         }
+    };
+
+    const handleSkip = () => {
+        Alert.alert(
+            "Are you sure?",
+            "You may skip setup, but should you decide to use the sign-in feature of the app, you will need to update your info in settings.",
+            [
+                {
+                    text: "Yes!",
+                    onPress: () => {navigation.navigate('Home')},
+                },
+                {
+                    text: "No thanks",
+                }
+            ]
+        );
     };
 
     return (
@@ -48,7 +64,11 @@ const SetupScreen = ({ navigation }) => {
                 value={email}
                 onChangeText={setEmail}
             />
-            <Button title="Save" onPress={handleSave} />
+            <View style={styles.buttonStyles}>
+                <Button title="Save" onPress={handleSave} />
+                <Text>                     </Text>
+                <Button title="Skip" onPress={handleSkip} />
+            </View>
         </View>
     );
 };
@@ -66,6 +86,10 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         padding: 8,
     },
+    buttonStyles: {
+        flexDirection: 'row',
+        justifyContent: 'center'
+    }
 });
 
 export default SetupScreen;
