@@ -43,7 +43,7 @@ const WelcomeScreen = ({ navigation }) => {
                 ]}
             />
             <Animated.Text style={[styles.welcomeText, { opacity: textFade }]}>
-                Welcome to Wesley!
+                Welcome to the Wesley App!
             </Animated.Text>
         </View>
     );
@@ -62,8 +62,11 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     welcomeText: {
-        fontSize: 24,
-        fontWeight: 'bold'
+        fontSize: 32,
+        fontWeight: 'bold',
+        color: 'black',
+        padding: 20,
+        textAlign: 'center'
     }
 });
 
