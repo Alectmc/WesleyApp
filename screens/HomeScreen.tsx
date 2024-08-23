@@ -65,6 +65,12 @@ const HomeScreen = ({ navigation }) => {
             >
                 <Text style={styles.buttonText}>Send Prayer Request</Text>
             </TouchableOpacity>
+            <TouchableOpacity 
+                style={styles.button} 
+                onPress={() => navigation.navigate("Whats New")}
+            >
+                <Text style={styles.buttonText}>What's New/Check For Update</Text>
+            </TouchableOpacity>
         </View>
     );
 };
