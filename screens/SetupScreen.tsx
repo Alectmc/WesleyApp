@@ -21,6 +21,7 @@ const SetupScreen = ({ navigation }) => {
 
         try {
             await AsyncStorage.setItem('user_info', JSON.stringify({ firstName, lastName, email }));
+            await AsyncStorage.setItem('seen_setup', 'true');
             console.log('User info saved');
             navigation.navigate('Home');
         } catch (e) {
@@ -35,7 +36,10 @@ const SetupScreen = ({ navigation }) => {
             [
                 {
                     text: "Yes!",
-                    onPress: () => {navigation.navigate('Home')},
+                    onPress: async () => { 
+                        await AsyncStorage.setItem('seen_setup', 'true');
+                        navigation.navigate('Home'); 
+                    },
                 },
                 {
                     text: "No thanks",
@@ -46,6 +50,7 @@ const SetupScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.welcomeText}>Welcome to the Wesley of Middle Tennessee Mobile App! If you'd like to use the app to sign in, please enter your information below (NOTE: This is <Text style={styles.underline}>NOT</Text> required and can be done later in settings.)</Text>
             <Text>First Name: </Text>
             <TextInput
                 style={styles.input}
@@ -89,6 +94,16 @@ const styles = StyleSheet.create({
     buttonStyles: {
         flexDirection: 'row',
         justifyContent: 'center'
+    },
+    welcomeText: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 20,
+        paddingBottom: 40,
+        color: 'black'
+    },
+    underline: {
+        textDecorationLine: 'underline'
     }
 });
 
