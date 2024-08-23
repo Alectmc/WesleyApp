@@ -9,6 +9,7 @@ import SetupScreen from "../screens/SetupScreen";
 import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
+import WhatsNewScreen from '../screens/WhatsNewScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, ActivityIndicator } from 'react-native';
 
@@ -19,8 +20,9 @@ const AppNavigator = () => {
 
     useEffect(() => {
         const checkUserInfo = async () => {
-            const userInfo = await AsyncStorage.getItem('user_info');
-            if (userInfo) {
+            //const userInfo = await AsyncStorage.getItem('user_info');
+            const seenSetup = await AsyncStorage.getItem('seen_setup')
+            if (seenSetup) {
                 setInitialRoute('Home')
             } else {
                 setInitialRoute('Setup');
@@ -55,6 +57,7 @@ const AppNavigator = () => {
                 <Stack.Screen name="Calendar" component={CalendarScreen} />
                 <Stack.Screen name="Link Tree" component={LinkTreeScreen} />
                 <Stack.Screen name="Prayer Requests" component={PrayerRequestScreen} />
+                <Stack.Screen name="Whats New" component={WhatsNewScreen} />
                 <Stack.Screen name="Setup" component={SetupScreen} />
                 <Stack.Screen name="Settings" component={SettingsScreen} />
             </Stack.Navigator>
