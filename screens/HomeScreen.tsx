@@ -1,9 +1,36 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 //import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = ({ navigation }) => {
+    const checkInfo = async () => {
+        const userInfo = await AsyncStorage.getItem('user_info');
+        if(userInfo) {
+            const { firstName, lastName, email } = JSON.parse(userInfo);
+
+            if (firstName && lastName && email) {
+                navigation.navigate('Sign In');
+            } else {
+                invalidInfoAlert();
+            }
+        } else {
+            invalidInfoAlert();
+        }
+    };
+
+    const invalidInfoAlert = () => {
+        Alert.alert(
+            'Missing/Incomplete Information',
+            'Your first name, last name, and/or email were not found. This is required for signing in. Would you like to add them now?',
+            [
+                { text: 'Yes', onPress: () => navigation.navigate('Settings') },
+                { text: 'No' },
+            ]
+        );
+    };
+
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -13,10 +40,10 @@ const HomeScreen = ({ navigation }) => {
                 <Icon name='settings-outline' size={32} color='black' />
             </TouchableOpacity>
             <Image source={require('../assets/Logo.png')} style={styles.imageStyle} />
-            <Text style={styles.textStyle}>Welcome to the Wesley App Alpha Test!</Text>
+            <Text style={styles.textStyle}>Welcome to the Wesley App!{'\n'}(Beta Version 0.1)</Text>
             <TouchableOpacity 
                 style={styles.button} 
-                onPress={() => navigation.navigate('Sign In')}
+                onPress={checkInfo}
             >
                 <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
@@ -94,7 +121,8 @@ const styles = StyleSheet.create({
         padding: 16,
         fontWeight: 'bold',
         fontSize: 22,
-        color: 'black'
+        color: 'black',
+        textAlign: 'center'
     }
 });
 
