@@ -3,6 +3,7 @@ import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import CheckBox from 'expo-checkbox';
 //import Mailer from 'react-native-mail';
 import axios from 'axios';
+import FooterText from '../footer/FooterText';
 
 /*const PrayerRequestScreen = () => {
     const [message, setMessage] = useState('');
@@ -83,6 +84,8 @@ const PrayerRequestScreen = () => {
                 />
             </View>
             <Button title="Send" onPress={sendPrayerRequest} />
+
+            <FooterText />
         </View>
     );
 };
