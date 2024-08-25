@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, TouchableOpacity, Image, Alert } from '
 //import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FooterText from '../footer/FooterText';
 
 const HomeScreen = ({ navigation }) => {
     const checkInfo = async () => {
@@ -71,6 +72,8 @@ const HomeScreen = ({ navigation }) => {
             >
                 <Text style={styles.buttonText}>What's New/Check For Update</Text>
             </TouchableOpacity>
+
+            <FooterText />
         </View>
     );
 };
