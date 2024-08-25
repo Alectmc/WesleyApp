@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification';
+import FooterText from '../footer/FooterText';
 
 const SetupScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState('');
@@ -74,6 +75,8 @@ const SetupScreen = ({ navigation }) => {
                 <Text>                     </Text>
                 <Button title="Skip" onPress={handleSkip} />
             </View>
+
+            <FooterText />
         </View>
     );
 };
