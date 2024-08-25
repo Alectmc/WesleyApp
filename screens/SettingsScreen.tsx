@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, Alert, AlertButton } from 'r
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import FooterText from '../footer/FooterText';
 
 const SettingsScreen = () => {
     const [firstName, setFirstName] = useState('');
@@ -118,6 +119,7 @@ const SettingsScreen = () => {
                 <Text style={styles.buttonText}>Delete All Data</Text>
             </TouchableOpacity>
 
+            <FooterText />
         </View>
     );
 };
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black',
+        color: 'white',
         textAlign: 'center'
     }
 });
