@@ -14,7 +14,7 @@ const WhatsNewScreen = () => {
             const response = await axios.post('http://172.16.100.30:5000/check-version', {
                 version: 'v0.1b'
             }, {
-                timeout: 10000
+                timeout: 5000
             });
             const data = response.data;
             if (data.latest) {
