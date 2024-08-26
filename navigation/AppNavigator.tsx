@@ -59,7 +59,7 @@ const AppNavigator = () => {
                 <Stack.Screen name="Prayer Requests" component={PrayerRequestScreen} />
                 <Stack.Screen name="Whats New" component={WhatsNewScreen} />
                 <Stack.Screen name="Setup" component={SetupScreen} />
-                <Stack.Screen name="Settings" component={SettingsScreen} />
+                <Stack.Screen name="Profile Settings" component={SettingsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

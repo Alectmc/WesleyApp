@@ -36,9 +36,9 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.container}>
             <TouchableOpacity
                 style={styles.settingsButton}
-                onPress={() => navigation.navigate('Settings')}
+                onPress={() => navigation.navigate('Profile Settings')}
             >
-                <Icon name='settings-outline' size={32} color='black' />
+                <Icon name='person-circle-outline' size={40} color='black' />
             </TouchableOpacity>
             <Image source={require('../assets/Logo.png')} style={styles.imageStyle} />
             <Text style={styles.textStyle}>Welcome to the Wesley App!{'\n'}(Beta Version 0.1)</Text>
