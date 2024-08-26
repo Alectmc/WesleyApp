@@ -54,7 +54,7 @@ const SignInScreen = () => {
                 lastName,
                 email
             }, {
-                timeout: 10000
+                timeout: 5000
             });
             Alert.alert("Success", `You have signed in as ${firstName} ${lastName} for ${event.label}!`);
         } catch (e) {
