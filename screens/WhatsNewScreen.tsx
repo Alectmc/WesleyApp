@@ -31,8 +31,8 @@ const WhatsNewScreen = () => {
 
             if (error.message === 'Network Error') { //ECONNABORTED is the error code in axios for a timed out request.
                 Alert.alert('Network Error', 'Checking for updates took too long. Please try again later.')
-            } else{
-                Alert.alert('Error', 'An unknown error has occured. Please try again later.')
+            } else {
+                Alert.alert('Error', 'An error has occured. Please try again later.')
                 //setUpdateMessage('An error occured during version check. Please try again later.')
             }
         }
