@@ -12,8 +12,8 @@ const FooterText = () => {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        left: 10,
-        bottom: 10
+        left: 20,
+        bottom: 14
     },
     textStyle: {
         fontSize: 12,
