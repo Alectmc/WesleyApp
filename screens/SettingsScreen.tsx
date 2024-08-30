@@ -42,7 +42,7 @@ const SettingsScreen = () => {
     const handleDeleteData = () => {
         Alert.alert(
             "WARNING: This cannot be undone",
-            "Are you sure you want to delete all data?",
+            "Are you sure you want to delete all info?",
             [
                 {
                     text: 'Cancel',
@@ -54,7 +54,7 @@ const SettingsScreen = () => {
                         setFirstName('');
                         setLastName('');
                         setEmail('');
-                        Alert.alert("Success", "Your data has been deleted.");
+                        Alert.alert("Success", "Your info has been deleted.");
                      }
                 }
 
@@ -116,7 +116,7 @@ const SettingsScreen = () => {
             )}
 
             <TouchableOpacity style={styles.button} onPress={handleDeleteData}>
-                <Text style={styles.buttonText}>Delete All Data</Text>
+                <Text style={styles.buttonText}>Delete All Info</Text>
             </TouchableOpacity>
 
             <FooterText />
