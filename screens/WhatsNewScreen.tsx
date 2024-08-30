@@ -46,6 +46,7 @@ const WhatsNewScreen = () => {
             <Text style={styles.list}>-Sign Ins are now being tested!</Text>
             <Text style={styles.list}>-Calendar and Link Tree are now available!</Text>
             <Text style={styles.list}>-Prayer Requests are now being tested!</Text>
+            <Text style={styles.list}>-Notifications are on the to-do list!</Text>
             <Text style={styles.list}>-What's New section added to view what's new in each update and check for an update!</Text>
 
             {loading ? (
