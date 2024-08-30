@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
             'Missing/Incomplete Information',
             'Your first name, last name, and/or email were not found. This is required for signing in. Would you like to add them now?',
             [
-                { text: 'Yes', onPress: () => navigation.navigate('Settings') },
+                { text: 'Yes', onPress: () => navigation.navigate('Profile Settings') },
                 { text: 'No' },
             ]
         );
