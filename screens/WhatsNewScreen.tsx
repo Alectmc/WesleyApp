@@ -25,7 +25,7 @@ const WhatsNewScreen = () => {
                 //setUpdateMessage(`OUT OF DATE. AN UPDATE IS AVAILABLE: ${data.latestVersion}`);
             }
         } catch (e) {
-            console.log(e);
+            console.warn(e);
 
             const error = e as AxiosError;
 
