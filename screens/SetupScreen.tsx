@@ -8,6 +8,7 @@ const SetupScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [betaAgree, setBetaAgree] = useState('');
 
     const handleSave = async() => {
         if (!firstName || !lastName || !email) {
@@ -24,7 +25,8 @@ const SetupScreen = ({ navigation }) => {
             await AsyncStorage.setItem('user_info', JSON.stringify({ firstName, lastName, email }));
             await AsyncStorage.setItem('seen_setup', 'true');
             console.log('User info saved');
-            navigation.navigate('Home');
+            navigation.navigate('Beta Disclaimer')
+            //navigation.navigate('Home');
         } catch (e) {
             Alert.alert('Error', 'An unexpected error occured. Please try again later.');
         }
@@ -39,7 +41,7 @@ const SetupScreen = ({ navigation }) => {
                     text: "Yes!",
                     onPress: async () => { 
                         await AsyncStorage.setItem('seen_setup', 'true');
-                        navigation.navigate('Home'); 
+                        navigation.navigate('Beta Disclaimer'); 
                     },
                 },
                 {
