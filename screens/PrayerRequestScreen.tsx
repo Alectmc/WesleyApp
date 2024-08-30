@@ -47,27 +47,27 @@ const PrayerRequestScreen = () => {
     const [isAnonymous, setIsAnonymous] = useState(false);
 
     const sendPrayerRequest = () => {
-        let emailMessage = `PRAYER REQUEST RECEIVED FROM THE WESLEY APP:\n\n${message}`;
+        let emailMessage = `\bPRAYER REQUEST RECEIVED FROM THE WESLEY APP:\n\n"${message}"`;
         if (isAnonymous) {
             emailMessage += '\n\nNOTE: This Prayer Request Has Been Marked as Confidential.';
         }
 
-        emailMessage += '\n\n\nALL ATTACHMENTS IN THIS EMAIL ARE CONFIDENTIAL.'
+        emailMessage += ''
 
-        axios.post('http://192.168.1.154:3000/send-prayer-request', {message: emailMessage})
+        axios.post('http://172.16.100.24:3000/send-prayer-request', {message: emailMessage})
             .then(reponse => {
-                Alert.alert('Success!', 'Your prayer request has been sent!');
+                Alert.alert('Prayer Request Sent', 'Your prayer request has been sent!');
                 setMessage('');
             })
             .catch(error => {
-                Alert.alert('Error', 'Could not send prayer request...');
+                Alert.alert('Error', 'Could not send prayer request due to an error');
                 console.warn(error);
             });
     };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.textStyle}>IT WORKS!! PRAISE BE TO GOD!</Text>
+            <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Enter your prayer request here..."
@@ -112,7 +112,11 @@ const styles = StyleSheet.create({
         marginLeft: 8,
     },
     textStyle: {
-        textAlign: 'center'
+        fontSize: 32,
+        textAlign: 'center',
+        color: 'black',
+        fontWeight: 'bold',
+        paddingBottom: 50
     }
 });
 
