@@ -10,6 +10,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import SignInScreen from '../screens/SignInScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import WhatsNewScreen from '../screens/WhatsNewScreen';
+import BetaScreen from '../screens/BetaScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, ActivityIndicator } from 'react-native';
 
@@ -21,7 +22,7 @@ const AppNavigator = () => {
     useEffect(() => {
         const checkUserInfo = async () => {
             //const userInfo = await AsyncStorage.getItem('user_info');
-            const seenSetup = await AsyncStorage.getItem('seen_setup')
+            const seenSetup = await AsyncStorage.getItem('agree_terms')
             if (seenSetup) {
                 setInitialRoute('Home')
             } else {
@@ -60,6 +61,14 @@ const AppNavigator = () => {
                 <Stack.Screen name="Whats New" component={WhatsNewScreen} />
                 <Stack.Screen name="Setup" component={SetupScreen} />
                 <Stack.Screen name="Profile Settings" component={SettingsScreen} />
+                <Stack.Screen
+                    name="Beta Disclaimer"
+                    component={BetaScreen} 
+                    options={{
+                        headerLeft: null,
+                        gestureEnabled: false
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
