@@ -77,9 +77,10 @@ const PrayerRequestScreen = () => {
                 onChangeText={setMessage}
             />
             <View style={styles.checkboxContainer}>
-                <Text>Would you like this Prayer Request to stay private? </Text>
+                <Text style={styles.checkboxLabel}>Would you like this Prayer Request to stay private? </Text>
                 <CheckBox
                     value={isAnonymous}
+                    style={styles.checkbox}
                     onValueChange={setIsAnonymous}
                 />
             </View>
@@ -109,7 +110,10 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     checkboxLabel: {
-        marginLeft: 8,
+        marginLeft: 20,
+    },
+    checkbox: {
+        marginLeft: 10,
     },
     textStyle: {
         fontSize: 32,
