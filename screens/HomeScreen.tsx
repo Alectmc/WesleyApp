@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
         right: 16,
     },
     imageStyle: {
-        width: 250,
-        height: 250,
+        width: 150,
+        height: 150,
     },
     textStyle: {
         padding: 16,
