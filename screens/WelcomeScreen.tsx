@@ -36,7 +36,7 @@ const WelcomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Animated.Image
-                source={require('../assets/Logo.png')}
+                source={require('../assets/Logo2.png')}
                 style={[
                     styles.logo,
                     { opacity : logoFade }
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     logo: {
-        width: 250,
-        height: 250,
+        width: 350,
+        height: 200,
         marginBottom: 20
     },
     welcomeText: {
