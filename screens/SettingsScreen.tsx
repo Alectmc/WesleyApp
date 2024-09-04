@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert, AlertButton } from 'react-native';
+import { View, Text, TextInput, Button, Image, StyleSheet, Alert, AlertButton } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -64,6 +64,7 @@ const SettingsScreen = () => {
 
     return (
         <View style={styles.container}>
+            <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
             <Text style={styles.textStyle}>First Name: </Text>
             {editFirstName ? (
                 <>
@@ -171,6 +172,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
         textAlign: 'center'
+    },
+    imageStyle: {
+        position: 'absolute',
+        width: '112%',
+        height: '112%'
     }
 });
 
