@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
+import { View, TextInput, Button, Image, StyleSheet, Text, Alert } from 'react-native';
 import CheckBox from 'expo-checkbox';
 //import Mailer from 'react-native-mail';
 import axios from 'axios';
@@ -67,6 +67,7 @@ const PrayerRequestScreen = () => {
 
     return (
         <View style={styles.container}>
+            <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
             <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
             <TextInput
                 style={styles.input}
@@ -121,6 +122,11 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
         paddingBottom: 50
+    },
+    imageStyle: {
+        position: 'absolute',
+        width: '112%',
+        height: '112%'
     }
 });
 

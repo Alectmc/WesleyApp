@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, Alert, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, Button, Image, Alert, ActivityIndicator, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
@@ -58,7 +58,7 @@ const SignInScreen = () => {
             });
             Alert.alert("Success", `You have signed in as ${firstName} ${lastName} for ${event.label}!`);
         } catch (e) {
-            console.log(e)
+            console.warn(e);
             const error = e as AxiosError;
             if (error.message === 'Network Error'){
                 Alert.alert('Network Error', 'Signing in took too long to complete. Please try again later.');
@@ -100,6 +100,7 @@ const SignInScreen = () => {
 
     return (
         <View style={styles.container}>
+            <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
             <Text style={styles.textStyle}>Select Event:</Text>
             <Picker
                 selectedValue={selectedEvent}
@@ -141,6 +142,11 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: 'black',
     },
+    imageStyle: {
+        position: 'absolute',
+        width: '112%',
+        height: '112%'
+    }
 });
 
 export default SignInScreen;

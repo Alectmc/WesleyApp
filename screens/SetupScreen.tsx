@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Button, Image, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification';
 import FooterText from '../footer/FooterText';
@@ -53,6 +53,7 @@ const SetupScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
             <Text style={styles.welcomeText}>Welcome to the Wesley of Middle Tennessee Mobile App! If you'd like to use the app to sign in, please enter your information below (NOTE: This is <Text style={styles.underline}>NOT</Text> required and can be done later in settings.)</Text>
             <Text>First Name: </Text>
             <TextInput
@@ -109,6 +110,11 @@ const styles = StyleSheet.create({
     },
     underline: {
         textDecorationLine: 'underline'
+    },
+    imageStyle: {
+        position: 'absolute',
+        width: '112%',
+        height: '112%'
     }
 });
 
