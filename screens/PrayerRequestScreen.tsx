@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Image, StyleSheet, Text, Alert } from 'react-native';
+import { View, TextInput, Button, Image, StyleSheet, Text, Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import CheckBox from 'expo-checkbox';
 //import Mailer from 'react-native-mail';
 import axios from 'axios';
@@ -54,7 +54,7 @@ const PrayerRequestScreen = () => {
 
         emailMessage += ''
 
-        axios.post('http://172.16.100.24:3000/send-prayer-request', {message: emailMessage})
+        axios.post('https://server.wesleyfoundationmt.org', {message: emailMessage})
             .then(reponse => {
                 Alert.alert('Prayer Request Sent', 'Your prayer request has been sent!');
                 setMessage('');
@@ -66,29 +66,31 @@ const PrayerRequestScreen = () => {
     };
 
     return (
-        <View style={styles.container}>
-            <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
-            <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Enter your prayer request here..."
-                multiline
-                numberOfLines={4}
-                value={message}
-                onChangeText={setMessage}
-            />
-            <View style={styles.checkboxContainer}>
-                <Text style={styles.checkboxLabel}>Would you like this Prayer Request to stay private? </Text>
-                <CheckBox
-                    value={isAnonymous}
-                    style={styles.checkbox}
-                    onValueChange={setIsAnonymous}
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.container}>
+                <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
+                <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Enter your prayer request here..."
+                    multiline
+                    numberOfLines={4}
+                    value={message}
+                    onChangeText={setMessage}
                 />
-            </View>
-            <Button title="Send" onPress={sendPrayerRequest} />
+                <View style={styles.checkboxContainer}>
+                    <Text style={styles.checkboxLabel}>Would you like this Prayer Request to stay private? </Text>
+                    <CheckBox
+                        value={isAnonymous}
+                        style={styles.checkbox}
+                        onValueChange={setIsAnonymous}
+                    />
+                </View>
+                <Button title="Send" onPress={sendPrayerRequest} />
 
-            <FooterText />
-        </View>
+                <FooterText />
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     checkboxLabel: {
-        marginLeft: 20,
+        alignItems: 'center'
     },
     checkbox: {
         marginLeft: 10,

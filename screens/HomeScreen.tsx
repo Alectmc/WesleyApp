@@ -12,12 +12,15 @@ const HomeScreen = ({ navigation }) => {
             const { firstName, lastName, email } = JSON.parse(userInfo);
 
             if (firstName && lastName && email) {
-                navigation.navigate('Sign In');
+                Alert.alert("Sign-In Coming Soon!", "The Sign-In Feature will be available in a future version of the Wesley App!")
+                //navigation.navigate('Sign In');
             } else {
-                invalidInfoAlert();
+                Alert.alert("Sign-In Coming Soon!", "The Sign-In Feature will be available in a future version of the Wesley App!")
+                //invalidInfoAlert();
             }
         } else {
-            invalidInfoAlert();
+            Alert.alert("Sign-In Coming Soon!", "The Sign-In Feature will be available in a future version of the Wesley App!")
+            //invalidInfoAlert();
         }
     };
 
@@ -41,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
                 <Icon name='person-circle-outline' size={40} color='black' />
             </TouchableOpacity>
             <Image source={require('../assets/Logo.png')} style={styles.imageStyle} />
-            <Text style={styles.textStyle}>Welcome to the Wesley App!{'\n'}(Beta Version 0.1)</Text>
+            <Text style={styles.textStyle}>Welcome to the Wesley App!{'\n'}(Beta Version 0.3)</Text>
             <TouchableOpacity 
                 style={styles.button} 
                 onPress={checkInfo}
@@ -70,7 +73,7 @@ const HomeScreen = ({ navigation }) => {
                 style={styles.button} 
                 onPress={() => navigation.navigate("Whats New")}
             >
-                <Text style={styles.buttonText}>What's New/Check For Update</Text>
+                <Text style={styles.buttonText}>What's New</Text>
             </TouchableOpacity>
 
             <FooterText />

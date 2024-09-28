@@ -43,7 +43,7 @@ const WelcomeScreen = ({ navigation }) => {
                 ]}
             />
             <Animated.Text style={[styles.welcomeText, { opacity: textFade }]}>
-                Welcome to the Wesley App!
+                Welcome to Wesley!
             </Animated.Text>
         </View>
     );

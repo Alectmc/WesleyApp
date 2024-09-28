@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, Button, Alert, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, Button, Image, Alert, StyleSheet, ActivityIndicator } from 'react-native';
 import FooterText from '../footer/FooterText';
 import axios, { AxiosError } from 'axios'; //Using 0.24.0
 
 const WhatsNewScreen = () => {
     //const [updateMessage, setUpdateMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+    /*const [loading, setLoading] = useState(false);
 
     const checkAppVersion = async () => {
         setLoading(true);
@@ -37,25 +37,17 @@ const WhatsNewScreen = () => {
             }
         }
         setLoading(false);
-    };
+    };*/
 
     return(
         <View style={styles.container}>
-            <Text style={styles.mainText}>What's New in Beta 0.1?</Text>
-            <Text style={styles.list}>-The Wesley App is now in BETA!!!!!</Text>
-            <Text style={styles.list}>-Sign Ins are now being tested!</Text>
+            <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
+            <Text style={styles.mainText}>What's New in Beta 0.3?</Text>
+            <Text style={styles.list}>-The Wesley App is now in OPEN BETA!!!!!</Text>
             <Text style={styles.list}>-Calendar and Link Tree are now available!</Text>
             <Text style={styles.list}>-Prayer Requests are now being tested!</Text>
             <Text style={styles.list}>-Notifications are on the to-do list!</Text>
-            <Text style={styles.list}>-What's New section added to view what's new in each update and check for an update!</Text>
-
-            {loading ? (
-                <ActivityIndicator size='large' color='blue' />
-            ) : (
-                <>
-                    <Button title="Check For Update" onPress={checkAppVersion} />
-                </>
-            )}
+            <Text style={styles.list}>-What's New section added to view what's new in each update!</Text>
 
             <FooterText />
         </View>
@@ -82,6 +74,21 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
         paddingBottom: 20
+    },
+    imageStyle: {
+        position: 'absolute',
+        width: '112%',
+        height: '112%'
     }
 })
 export default WhatsNewScreen
+
+/*
+{loading ? (
+                <ActivityIndicator size='large' color='blue' />
+            ) : (
+                <>
+                    <Button title="Check For Update" onPress={checkAppVersion} />
+                </>
+            )}
+*/
