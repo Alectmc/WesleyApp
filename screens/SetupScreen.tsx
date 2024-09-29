@@ -8,7 +8,6 @@ const SetupScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [betaAgree, setBetaAgree] = useState('');
 
     const handleSave = async() => {
         if (!firstName || !lastName || !email) {
@@ -54,7 +53,8 @@ const SetupScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
-            <Text style={styles.welcomeText}>Welcome to the Wesley of Middle Tennessee Mobile App! If you'd like to use the app to sign in, please enter your information below (NOTE: This is <Text style={styles.underline}>NOT</Text> required and can be done later in settings.)</Text>
+            <Image source={require('../assets/Logo2.png')} style={styles.logo} />
+            <Text style={styles.welcomeText}>Welcome to the Wesley of Middle Tennessee Mobile App!{'\n\n'}If you'd like to use the app to sign in, please enter your information below.{'\n'}(NOTE: This is <Text style={styles.underline}>NOT</Text> required and can be done later in settings.)</Text>
             <Text>First Name: </Text>
             <TextInput
                 style={styles.input}
@@ -115,6 +115,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '112%',
         height: '112%'
+    },
+    logo: {
+        width: 250,
+        height: 150,
+        marginBottom: 20,
+        alignSelf: 'center'
     }
 });
 
