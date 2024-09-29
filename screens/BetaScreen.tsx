@@ -6,8 +6,13 @@ const BetaScreen = ({ navigation }) => {
     const agree = 'true';
 
     const agreeToTerms = async () => {
-        const agreeInfo = await AsyncStorage.setItem('agree_terms', JSON.stringify({ agree }))
-        navigation.navigate('Home')
+        try{
+            await AsyncStorage.setItem('agree_terms', JSON.stringify({ agree }))
+            navigation.navigate('Home')
+        }
+        catch (e){
+            Alert.alert('Error', 'An unexpected error occured. Please try again later.');
+        }
     }
 
     return(
