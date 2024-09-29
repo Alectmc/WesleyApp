@@ -17,7 +17,7 @@ const BetaScreen = ({ navigation }) => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.betaText}>DISCLAIMER</Text>
+            <Text style={styles.betaText}>BETA DISCLAIMER</Text>
             <Text style={styles.descText}>This is a beta build of the Wesley App.</Text>
             <Text style={styles.descText}>Some things may not work properly, and this build is <Text style={styles.underline}>NOT</Text> reflective of the final version.</Text>
             <Text style={styles.descText}>To get started testing the app, simply tap 'I Understand' below!</Text>
