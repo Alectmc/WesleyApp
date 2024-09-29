@@ -47,6 +47,7 @@ const WhatsNewScreen = () => {
             <Text style={styles.list}>-Calendar and Link Tree are now available!</Text>
             <Text style={styles.list}>-Prayer Requests are now being tested!</Text>
             <Text style={styles.list}>-Notifications are on the to-do list!</Text>
+            <Text style={styles.list}>-Sign-Ins Are Coming Soon!</Text>
             <Text style={styles.list}>-What's New section added to view what's new in each update!</Text>
 
             <FooterText />
@@ -58,13 +59,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#fff'
     },
     mainText: {
         fontWeight: 'bold',
         fontSize: 44,
         textAlign: 'center',
-        paddingBottom: 100,
+        paddingBottom: 50,
         color: 'black'
     },
     list: {
