@@ -24,7 +24,7 @@ const WelcomeScreen = ({ navigation }) => {
         ]).start(() => checkUserInfo());
 
         const checkUserInfo = async () => {
-            const userInfo = await AsyncStorage.getItem('user_info');
+            const userInfo = await AsyncStorage.getItem('agree_terms');
             if (userInfo) {
                 navigation.replace('Home');
             } else {
