@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Image, StyleSheet, Text, Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { View, TextInput, Button, Image, StyleSheet, Text, Alert, Keyboard, TouchableWithoutFeedback, ActivityIndicator } from 'react-native';
 import CheckBox from 'expo-checkbox';
 //import Mailer from 'react-native-mail';
 import axios from 'axios';
@@ -45,8 +45,11 @@ import FooterText from '../footer/FooterText';
 const PrayerRequestScreen = () => {
     const [message, setMessage] = useState('');
     const [isAnonymous, setIsAnonymous] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const sendPrayerRequest = () => {
+        setIsLoading(true);
+
         let emailMessage = `\bPRAYER REQUEST RECEIVED FROM THE WESLEY APP:\n\n"${message}"`;
         if (isAnonymous) {
             emailMessage += '\n\nNOTE: This Prayer Request Has Been Marked as Confidential.';
@@ -54,12 +57,14 @@ const PrayerRequestScreen = () => {
 
         emailMessage += ''
 
-        axios.post('https://server.wesleyfoundationmt.org', {message: emailMessage})
+        axios.post('https://server.wesleyfoundationmt.org', {message: emailMessage}, {timeout: 5000})
             .then(reponse => {
+                setIsLoading(false);
                 Alert.alert('Prayer Request Sent', 'Your prayer request has been sent!');
                 setMessage('');
             })
             .catch(error => {
+                setIsLoading(false);
                 Alert.alert('Error', 'Could not send prayer request due to an error');
                 console.warn(error);
             });
@@ -86,7 +91,11 @@ const PrayerRequestScreen = () => {
                         onValueChange={setIsAnonymous}
                     />
                 </View>
-                <Button title="Send" onPress={sendPrayerRequest} />
+                {isLoading ? (
+                    <ActivityIndicator size="large" color="black" /> // Show loader when loading
+                ) : (
+                    <Button title="Send" onPress={sendPrayerRequest} disabled={isLoading} /> // Disable button while loading
+                )}
 
                 <FooterText />
             </View>
