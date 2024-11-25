@@ -1,11 +1,14 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Image, Alert, FlatList } from 'react-native';
 //import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FooterText from '../footer/FooterText';
+import moment from 'moment'
+import axios from 'axios';
 
 const HomeScreen = ({ navigation }) => {
+
     const checkInfo = async () => {
         const userInfo = await AsyncStorage.getItem('user_info');
         if(userInfo) {
@@ -44,7 +47,8 @@ const HomeScreen = ({ navigation }) => {
                 <Icon name='person-circle-outline' size={40} color='black' />
             </TouchableOpacity>
             <Image source={require('../assets/Logo.png')} style={styles.imageStyle} />
-            <Text style={styles.textStyle}>Welcome to the Wesley App!{'\n'}(Closed Beta Version 0.4)</Text>
+            <Text style={styles.textStyle}>Welcome to the Wesley App!{'\n'}(Closed Beta Version 0.4.1)</Text>
+
             <TouchableOpacity 
                 style={styles.button} 
                 onPress={checkInfo}
@@ -80,18 +84,6 @@ const HomeScreen = ({ navigation }) => {
         </View>
     );
 };
-
-/*const HomeScreen = ({ navigation }) => {
-    return (
-        <View style={styles.container}>
-            <Text>Welcome to the Wesley App!</Text>
-            <Button title="View Calendar" onPress={() => navigation.navigate('Calendar')} />
-            <Button title="View LinkTree" onPress={() => navigation.navigate('Link Tree')} />
-            <Button title="Send Prayer Request" onPress={() => navigation.navigate('PrayerRequest')} />
-            
-        </View>
-    );
-};*/
 
 const styles = StyleSheet.create({
     container: {
@@ -135,6 +127,11 @@ const styles = StyleSheet.create({
         fontSize: 22,
         color: 'black',
         textAlign: 'center'
+    },
+    header: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginVertical: 10,
     }
 });
 
