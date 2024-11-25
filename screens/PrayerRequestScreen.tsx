@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Image, StyleSheet, Text, Alert, Keyboard, TouchableWithoutFeedback, ActivityIndicator } from 'react-native';
+import { View, TextInput, Button, Image, StyleSheet, Text, Alert, Keyboard, TouchableWithoutFeedback, ActivityIndicator, ScrollView } from 'react-native';
 import CheckBox from 'expo-checkbox';
 //import Mailer from 'react-native-mail';
 import axios from 'axios';
@@ -74,28 +74,28 @@ const PrayerRequestScreen = () => {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.container}>
                 <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
-                <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter your prayer request here..."
-                    multiline
-                    numberOfLines={4}
-                    value={message}
-                    onChangeText={setMessage}
-                />
-                <View style={styles.checkboxContainer}>
-                    <Text style={styles.checkboxLabel}>Would you like this Prayer Request to stay private? </Text>
-                    <CheckBox
-                        value={isAnonymous}
-                        style={styles.checkbox}
-                        onValueChange={setIsAnonymous}
+                    <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Enter your prayer request here..."
+                        multiline
+                        numberOfLines={4}
+                        value={message}
+                        onChangeText={setMessage}
                     />
-                </View>
-                {isLoading ? (
-                    <ActivityIndicator size="large" color="black" /> // Show loader when loading
-                ) : (
-                    <Button title="Send" onPress={sendPrayerRequest} disabled={isLoading} /> // Disable button while loading
-                )}
+                    <View style={styles.checkboxContainer}>
+                        <Text style={styles.checkboxLabel}>Would you like this Prayer Request to stay private? </Text>
+                        <CheckBox
+                            value={isAnonymous}
+                            style={styles.checkbox}
+                            onValueChange={setIsAnonymous}
+                        />
+                    </View>
+                    {isLoading ? (
+                        <ActivityIndicator size="large" color="black" /> // Show loader when loading
+                    ) : (
+                        <Button title="Send" onPress={sendPrayerRequest} disabled={isLoading} /> // Disable button while loading
+                    )}
 
                 <FooterText />
             </View>
