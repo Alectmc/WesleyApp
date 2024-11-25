@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Image, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Button, Image, StyleSheet, Alert, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification';
 import FooterText from '../footer/FooterText';
@@ -53,38 +53,53 @@ const SetupScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
-            <Image source={require('../assets/Logo2.png')} style={styles.logo} />
-            <Text style={styles.welcomeText}>Welcome to the Wesley of Middle Tennessee Mobile App!{'\n\n'}If you'd like to use the app to sign in, please enter your information below.{'\n'}(NOTE: This is <Text style={styles.underline}>NOT</Text> required and can be done later in settings.)</Text>
-            <Text>First Name: </Text>
-            <TextInput
-                style={styles.input}
-                value={firstName}
-                onChangeText={setFirstName}
-            />
-            <Text>Last Name: </Text>
-            <TextInput
-                style={styles.input}
-                value={lastName}
-                onChangeText={setLastName}
-            />
-            <Text>Email: </Text>
-            <TextInput
-                style={styles.input}
-                value={email}
-                onChangeText={setEmail}
-            />
-            <View style={styles.buttonStyles}>
-                <Button title="Save" onPress={handleSave} />
-                <Text>                     </Text>
-                <Button title="Skip" onPress={handleSkip} />
-            </View>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                keyboardVerticalOffset={120} // Adjust this if needed
+            >
+            <ScrollView style={styles.scrollContainer}>
+                <Image source={require('../assets/Logo2.png')} style={styles.logo} />
+                <Text style={styles.welcomeText}>Welcome to the Wesley of Middle Tennessee Mobile App!{'\n\n'}If you'd like to use the app to sign in, please enter your information below.{'\n'}(NOTE: This is <Text style={styles.underline}>NOT</Text> required and can be done later in settings.)</Text>
+                <Text>First Name: </Text>
+                <TextInput
+                    style={styles.input}
+                    value={firstName}
+                    onChangeText={setFirstName}
+                    returnKeyType='done'
+                />
+                <Text>Last Name: </Text>
+                <TextInput
+                    style={styles.input}
+                    value={lastName}
+                    onChangeText={setLastName}
+                    returnKeyType='done'
+                />
+                <Text>Email: </Text>
+                <TextInput
+                    style={styles.input}
+                    value={email}
+                    onChangeText={setEmail}
+                    returnKeyType='done'
+                />
+                <View style={styles.buttonStyles}>
+                    <Button title="Save" onPress={handleSave} />
+                    <Text>                     </Text>
+                    <Button title="Skip" onPress={handleSkip} />
+                </View>
 
+            </ScrollView>
+            </KeyboardAvoidingView>
             <FooterText />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    scrollContainer: {
+        flexGrow: 1,
+        //justifyContent: 'center'
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -114,7 +129,8 @@ const styles = StyleSheet.create({
     imageStyle: {
         position: 'absolute',
         width: '112%',
-        height: '112%'
+        height: '112%',
+        zIndex: -1, // Ensure it's behind other content
     },
     logo: {
         width: 250,
