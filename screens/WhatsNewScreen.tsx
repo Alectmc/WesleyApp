@@ -1,3 +1,5 @@
+//This screen has been depreciated and will be removed in a future version.
+
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import FooterText from '../footer/FooterText';
