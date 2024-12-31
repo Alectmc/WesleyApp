@@ -2,13 +2,15 @@ import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 
 const FooterText = () => {
+    //Generates footer text at bottom of each screen.
     return (
         <View style={styles.container}>
-            <Text style={styles.textStyle}>DEVELOPMENT BUILD: v0.4b</Text>
+            <Text style={styles.textStyle}>DEVELOPMENT BUILD: v0.4.1b</Text>
         </View>
     );
 }
 
+//Stylesheets for the text
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
