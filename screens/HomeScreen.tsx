@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, Alert, FlatList } from 'react-native';
-//import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FooterText from '../footer/FooterText';
-import moment from 'moment'
-import axios from 'axios';
 
+//This screen is the main screen for the user interface within the app.
 const HomeScreen = ({ navigation }) => {
 
+    //This user will check if the user has entered their info that is used for sign-ins.
+    //If so, they will be redirected to the Sign In screen, otherwise they will be prompted to
+    //enter their details. This function is currently inactive until the backend for the
+    //sign-ins is live.
     const checkInfo = async () => {
+        //Get user info from async storage.
         const userInfo = await AsyncStorage.getItem('user_info');
+        //Check if the user has info saved. If not, immediately prompt them for it.
         if(userInfo) {
+            //Parse user info.
             const { firstName, lastName, email } = JSON.parse(userInfo);
 
+            //If a valid first name, last name, and email are found, redirect to the Sign in screen.
+            //Otherwise, prompt the user for their info.
             if (firstName && lastName && email) {
                 Alert.alert("Sign-In Coming Soon!", "The Sign-In Feature will be available in a future version of the Wesley App!")
                 //navigation.navigate('Sign In');
@@ -27,7 +34,10 @@ const HomeScreen = ({ navigation }) => {
         }
     };
 
+    //This function is called if info is needed for signins
     const invalidInfoAlert = () => {
+        //Send a pop-up alert that the user is missing information and allow them to update it if they so choose
+        //in the profile setting screen.
         Alert.alert(
             'Missing/Incomplete Information',
             'Your first name, last name, and/or email were not found. This is required for signing in. Would you like to add them now?',
@@ -38,6 +48,9 @@ const HomeScreen = ({ navigation }) => {
         );
     };
 
+    //This is the screen for the main home page. Includes buttons signing in, the calendar, the LinkTree,
+    //sending prayer requests, and viewing whats new. At the top, there is also a button for profile settings
+    //(user info).
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -73,18 +86,13 @@ const HomeScreen = ({ navigation }) => {
             >
                 <Text style={styles.buttonText}>Send Prayer Request</Text>
             </TouchableOpacity>
-            <TouchableOpacity 
-                style={styles.button} 
-                onPress={() => navigation.navigate('Whats New')}
-            >
-                <Text style={styles.buttonText}>What's New</Text>
-            </TouchableOpacity>
 
             <FooterText />
         </View>
     );
 };
 
+//Stylesheets for the home screen.
 const styles = StyleSheet.create({
     container: {
         padding: 4,
