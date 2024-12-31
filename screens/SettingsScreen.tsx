@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import FooterText from '../footer/FooterText';
 
 const SettingsScreen = () => {
+    //Setup Use States for information editing.
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ const SettingsScreen = () => {
     const [editLastName, setEditLast] = useState(false);
     const [editEmail, setEditEmail] = useState(false);
 
+    //Use effect for when the user info is loaded to be displayed in the fields.
     useEffect(() => {
         const loadUserInfo = async () => {
             const userInfo = await AsyncStorage.getItem('user_info');
@@ -26,12 +28,15 @@ const SettingsScreen = () => {
         loadUserInfo();
     }, []);
 
+    //Function to save info when updated in settings
     const saveField = async (field: string) => {
+        //Check is the email is valid.
         if (field === "Email" && !ValidateEmail(email)) {
             Alert.alert('Error', 'Please type a valid email address.');
             return;
         }
 
+        //Save the new information, display a success message, and
         await AsyncStorage.setItem('user_info', JSON.stringify({ firstName, lastName, email }));
         Alert.alert('Success',  `${field} successfully updated!`);
         if (field === "First Name") setEditFirst(false);
@@ -39,7 +44,9 @@ const SettingsScreen = () => {
         if (field === "Email") setEditEmail(false);
     };
 
+    //Function to delete all data if the user so wishes.
     const handleDeleteData = () => {
+        //Prompt the user to confirm deletion of data.
         Alert.alert(
             "WARNING: This cannot be undone",
             "Are you sure you want to delete all info?",
@@ -62,6 +69,7 @@ const SettingsScreen = () => {
         );
     };
 
+    //User interface to be displayed for user settings.
     return (
         <View style={styles.container}>
             <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
@@ -125,6 +133,7 @@ const SettingsScreen = () => {
     );
 };
 
+//Stylesheets
 const styles = StyleSheet.create({
     container: {
         flex: 1,

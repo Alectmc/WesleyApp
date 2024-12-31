@@ -5,58 +5,38 @@ import CheckBox from 'expo-checkbox';
 import axios from 'axios';
 import FooterText from '../footer/FooterText';
 
-/*const PrayerRequestScreen = () => {
-    const [message, setMessage] = useState('');
-
-    const sendPrayerRequest = () => {
-        Mailer.mail({
-            subject: 'WESLEY APP: Prayer Request',
-            recipients: ['alectmc@gmail.com'],
-            body: message,
-            isHTML: true,
-        }, (error, event) => {
-            if (error) {
-                Alert.alert('Error', 'Could not send request. Please try again later');
-                console.warn(error);
-            }
-            else{
-                Alert.alert('Success', 'Your prayer request has been sent.');
-                setMessage('');
-            }
-        });
-    };
-
-    return (
-        <View style={styles.container}>
-            <Text>This is currently completely broken lol</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Enter your prayer request here..."
-                multiline
-                numberOfLines={4}
-                value={message}
-                onChangeText={setMessage}
-            />
-            <Button title="Send" onPress={sendPrayerRequest} />
-        </View>
-    );
-};*/
-
+//This screen is for sending prayer requests to the ministry staff.
 const PrayerRequestScreen = () => {
+    //Variables with setters.
     const [message, setMessage] = useState('');
     const [isAnonymous, setIsAnonymous] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+    //This function will send the prayer request typed in the message box to the ministry staff.
+
     const sendPrayerRequest = () => {
+        //Activate the loading icon.
         setIsLoading(true);
 
+        //If message has no contents, do not send it.
+        if (!message) {
+            Alert.alert('Warning', 'Your prayer request cannot have an empty body!');
+            return;
+        }
+
+        //Format the message to be sent.
         let emailMessage = `\bPRAYER REQUEST RECEIVED FROM THE WESLEY APP:\n\n"${message}"`;
+        //If the user has asked for their prayer request to be confidential, add a disclaimer at the end
+        //of the message.
         if (isAnonymous) {
             emailMessage += '\n\nNOTE: This Prayer Request Has Been Marked as Confidential.';
         }
 
         emailMessage += ''
 
+        //Send the prayer request to the backend server. If no response has been received after 5 seconds,
+        //report a timeout error. Otherwise, confirm the message was sent if there are no errors with
+        //a pop-up alert, end the loading animation, and reset the message to be empty.
         axios.post('https://server.wesleyfoundationmt.org', {message: emailMessage}, {timeout: 5000})
             .then(reponse => {
                 setIsLoading(false);
@@ -70,6 +50,7 @@ const PrayerRequestScreen = () => {
             });
     };
 
+    //Screen to be viewed by the end-user to enter and send their prayer request.
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.container}>
@@ -103,6 +84,7 @@ const PrayerRequestScreen = () => {
     );
 };
 
+//Stylesheets for the Prayer Request screen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
