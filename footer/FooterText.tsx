@@ -5,7 +5,7 @@ const FooterText = () => {
     //Generates footer text at bottom of each screen.
     return (
         <View style={styles.container}>
-            <Text style={styles.textStyle}>DEVELOPMENT BUILD: v0.4.1b</Text>
+            <Text style={styles.textStyle}>DEVELOPMENT BUILD: v0.7b</Text>
         </View>
     );
 }
