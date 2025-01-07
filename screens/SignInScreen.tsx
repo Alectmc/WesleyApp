@@ -7,6 +7,7 @@ import 'moment-timezone';
 import axios, { AxiosError } from 'axios';
 import FooterText from '../footer/FooterText';
 
+//Will be available in a future update...
 const SignInScreen = () => {
     const [selectedEvent, setSelectedEvent] = useState('tuesday_worship');
     const [firstName, setFirstName] = useState('');
