@@ -23,6 +23,8 @@ const WelcomeScreen = ({ navigation }) => {
             Animated.delay(1000)
         ]).start(() => checkUserInfo());
 
+        //If the user has agreed to the terms, navigate to the home screen.
+        //Otherwise, send the user to the first-time setup screen.
         const checkUserInfo = async () => {
             const userInfo = await AsyncStorage.getItem('agree_terms');
             if (userInfo) {
@@ -33,6 +35,7 @@ const WelcomeScreen = ({ navigation }) => {
         };
     }, []);
 
+    //User Interface for the animation
     return (
         <View style={styles.container}>
             <Animated.Image
@@ -49,6 +52,7 @@ const WelcomeScreen = ({ navigation }) => {
     );
 };
 
+//Stylesheets
 const styles = StyleSheet.create({
     container: {
         flex: 1,
