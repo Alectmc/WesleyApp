@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import FooterText from '../footer/FooterText';
-import axios, { AxiosError } from 'axios'; //Using 0.24.0
 
 const WhatsNewScreen = () => {
     return(
