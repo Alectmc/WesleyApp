@@ -4,22 +4,29 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import ValidateEmail from '../helper_funcs/EmailVerification';
 import FooterText from '../footer/FooterText';
 
+//This screen will be shown on first time setup if the user has NOT yet agreed to the beta terms.
 const SetupScreen = ({ navigation }) => {
+    //Setup Use States for setting the user's info.
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
 
+    //function to save the user's info.
     const handleSave = async() => {
+        //Check if all fields have been filled out. If not, report an error.
         if (!firstName || !lastName || !email) {
             Alert.alert('Error', 'Please fill in all fields.');
             return;
         }
 
+        //If the email is invalid, report an error.
         if (!ValidateEmail(email)) {
             Alert.alert('Error', 'Please type a valid email address.');
             return;
         }
 
+        //Mark that the user info has been saved and that the first-time setup has been seen. and send the user to the beta disclaimer.
+        //Otherwise, report an error.
         try {
             await AsyncStorage.setItem('user_info', JSON.stringify({ firstName, lastName, email }));
             await AsyncStorage.setItem('seen_setup', 'true');
@@ -31,6 +38,9 @@ const SetupScreen = ({ navigation }) => {
         }
     };
 
+    //If the user chooses to skip adding their info, prompt them for confirmation.
+    //If the user confirms, mark that the user has seen the first-time setup screen and
+    //navigate to the Beta disclaimer screen.
     const handleSkip = () => {
         Alert.alert(
             "Are you sure?",
@@ -50,6 +60,7 @@ const SetupScreen = ({ navigation }) => {
         );
     };
 
+    //User interface for the first-time setup screen.
     return (
         <View style={styles.container}>
             <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
@@ -95,6 +106,7 @@ const SetupScreen = ({ navigation }) => {
     );
 };
 
+//Stylesheets
 const styles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
