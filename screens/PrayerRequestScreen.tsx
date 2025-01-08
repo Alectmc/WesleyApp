@@ -21,6 +21,7 @@ const PrayerRequestScreen = () => {
         //If message has no contents, do not send it.
         if (!message) {
             Alert.alert('Warning', 'Your prayer request cannot have an empty body!');
+            setIsLoading(false);
             return;
         }
 
@@ -55,28 +56,33 @@ const PrayerRequestScreen = () => {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.container}>
                 <Image source={require('../assets/Blobs.png')} style={styles.imageStyle} />
-                    <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Enter your prayer request here..."
-                        multiline
-                        numberOfLines={4}
-                        value={message}
-                        onChangeText={setMessage}
-                    />
-                    <View style={styles.checkboxContainer}>
-                        <Text style={styles.checkboxLabel}>Would you like this Prayer Request to stay private? </Text>
-                        <CheckBox
-                            value={isAnonymous}
-                            style={styles.checkbox}
-                            onValueChange={setIsAnonymous}
+                <ScrollView contentContainerStyle={styles.scrollContainer}>
+                        <Text style={styles.textStyle}>How can we be in prayer for you?</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Enter your prayer request here..."
+                            multiline
+                            numberOfLines={4}
+                            value={message}
+                            onChangeText={setMessage}
+                            //returnKeyType="done"
+                            enterKeyHint='done'
+                            blurOnSubmit={true}
                         />
-                    </View>
-                    {isLoading ? (
-                        <ActivityIndicator size="large" color="black" /> // Show loader when loading
-                    ) : (
-                        <Button title="Send" onPress={sendPrayerRequest} disabled={isLoading} /> // Disable button while loading
-                    )}
+                        <View style={styles.checkboxContainer}>
+                            <Text style={styles.checkboxLabel}>Would you like this Prayer Request to stay private? </Text>
+                            <CheckBox
+                                value={isAnonymous}
+                                style={styles.checkbox}
+                                onValueChange={setIsAnonymous}
+                            />
+                        </View>
+                        {isLoading ? (
+                            <ActivityIndicator size="large" color="black" /> // Show loader when loading
+                        ) : (
+                            <Button title="Send" onPress={sendPrayerRequest} disabled={isLoading} /> // Disable button while loading
+                        )}
+                </ScrollView>
 
                 <FooterText />
             </View>
@@ -120,6 +126,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '112%',
         height: '112%'
+    },
+    scrollContainer: {
+        flexGrow: 1,
+        justifyContent: 'center'
     }
 });
 
