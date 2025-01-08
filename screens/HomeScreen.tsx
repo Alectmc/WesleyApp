@@ -60,7 +60,7 @@ const HomeScreen = ({ navigation }) => {
                 <Icon name='person-circle-outline' size={40} color='black' />
             </TouchableOpacity>
             <Image source={require('../assets/Logo.png')} style={styles.imageStyle} />
-            <Text style={styles.textStyle}>Welcome to the Wesley App!</Text>
+            <Text style={styles.textStyle}>Welcome to the Wesley App!{"\n"}(Public Beta 0.7)</Text>
 
             <TouchableOpacity 
                 style={styles.button} 
